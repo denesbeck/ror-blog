@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
     else
-      render :new, status: :unprocessable_entity
+      render :edit
     end
   end
 
@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
 
-    redirect_to root_path, statu: :see_other
+    redirect_to root_path
   end
 
   private

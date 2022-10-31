@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  url: postgres://postgres:postgres@host.docker.internal:5432/new_blog
+  url: postgres://postgres:postgres@host.docker.internal:5432/blog
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

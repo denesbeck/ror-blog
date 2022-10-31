@@ -1,19 +1,27 @@
+<%= form_with model: article, local:true do |form| %>
 
-<%= form_with model: article do |form| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <strong>
+        <%= pluralize(@article.errors.count, "error") %> prohibited
+        this article from being saved:
+      </strong>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %> 
+  
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
-    <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
   </div>
 
   <div>
     <%= form.label :body %><br>
     <%= form.text_area :body %><br>
-    <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
   </div>
 
   <div>
